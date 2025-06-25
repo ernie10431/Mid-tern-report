@@ -1,0 +1,26 @@
+排版(Alt+Shifi+f)
+檔案放置位置 註解(ctrl + /) 盡量避免重複程式碼
+Alt+d  依序選取相同標籤
+打開資料夾 在上面列表位置輸入 cmd 輸入 ng s(erve) --o(pen)
+<h1 class="enter">登入</h1>
+<h2 class="account">帳號:</h2>
+<input type="text" class="f1">
+
+<h2 class="password">密碼:</h2>
+<input type="password" class="f2">
+
+CSS
+
+.enter{
+  text-align: center;
+  font-size: 40px;
+  color: cornsilk;
+}
+.h1{
+  text-align: center;
+  margin-right: 10px;
+}
+.h2{
+  text-align: center;
+
+}
