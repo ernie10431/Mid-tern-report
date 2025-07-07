@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "demo": {
+    "Mid-tern-report-2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -30,7 +30,6 @@
               }
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ]
           },
@@ -62,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "demo:build:production"
+              "buildTarget": "Mid-tern-report-2:build:production"
             },
             "development": {
-              "buildTarget": "demo:build:development"
+              "buildTarget": "Mid-tern-report-2:build:development"
             }
           },
           "defaultConfiguration": "development"

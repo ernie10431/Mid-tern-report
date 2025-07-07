@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,RouterOutlet,RouterLinkActive,RouterLink,FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-clickBnt() {
-  alert("歸剛ㄟ")
-}
+  protected title = 'Mid-tern-report-2';
 }
