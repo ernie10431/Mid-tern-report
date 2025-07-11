@@ -1,0 +1,13 @@
+<div class="body2">
+  <h1>問卷標題</h1>
+
+  <div *ngFor="let txt of textboxes; let i = index">
+    <label>選項 {{i+1}}:</label>
+    <input class="f1" [(ngModel)]="textboxes[i]">
+    <br>
+  </div>
+
+  <button class="bt" (click)="addTextbox()">新增文字框</button>
+</div>
+
+

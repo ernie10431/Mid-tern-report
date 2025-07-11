@@ -1,38 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatTabsModule } from '@angular/material/tabs';
-import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-sixth',
-  imports: [MatTabsModule, RouterOutlet, RouterLink, FormsModule,
-    MatTableModule, MatPaginatorModule,CommonModule],
-  templateUrl: './sixth.html',
-  styleUrl: './sixth.scss'
+  selector: 'app-seventh',
+  imports: [FormsModule, MatTableModule, MatPaginatorModule],
+  templateUrl: './seventh.html',
+  styleUrl: './seventh.scss'
 })
-export class Sixth {
-  textboxes: string[] = [''];   // 一開始先有一個
-
-  addTextbox() {
-    this.textboxes.push('');    // 每次按鈕就加一個空字串
-  }
-
-  items = [
-    { id: 1, content: 'Electronics',type:'單選題',type2:'必填',edit:'編輯' },
-    { id: 2, content: 'Electronics',type:'多選題',type2:'必填',edit:'編輯' },
-    { id: 3, content: 'Electronics',type:'簡答題',type2:'必填',edit:'編輯' },
-  ];
-  // links = [
-  //   { path: '/firth', name: "問卷" },
-  //   { path: '/second', name: "題目" },
-  //   { path: '/third', name: "回饋問卷" },
-  //   { path: '/forth', name: "統計" }
-  // ];
-  // activeLink = this.links[0].name;
-
+export class Seventh {
   displayedColumns: string[] = ['position', 'names', 'start', 'result'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
@@ -42,13 +19,12 @@ export class Sixth {
     this.dataSource.paginator = this.paginator;
   }
 }
+
 export interface PeriodicElement {
   names: string;
   position: string;
   start: string;
   result: any;
-
-
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [

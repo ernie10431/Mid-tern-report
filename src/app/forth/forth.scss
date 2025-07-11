@@ -16,18 +16,18 @@ $hatsune-white: #ffffff;
   margin-bottom: 7px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+
 .body2{
   background-color: #f0f9f8; // 很淺的青綠
   color: $hatsune-dark;
   font-family: 'Segoe UI', 'Noto Sans TC', sans-serif;
-
   padding: 20px;
   border-radius: 12px;
-  width: 1050px;
-  border-color: $hatsune-green;
+  max-width: 1000px;
   margin: 20px auto; // 水平置中
-  margin-top: 5px;
+  margin-bottom: 7px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: #39C5BB;
 }
 
 .f1{

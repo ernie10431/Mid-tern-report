@@ -1,1 +1,133 @@
-<p>sixth works!</p>
+<!-- <nav class="tabs" mat-tab-nav-bar [tabPanel]="tabPanel">
+  @for (link of links; track link) {
+    <a mat-tab-link
+      (click)="activeLink = link.name"
+      [routerLink]="link.path"
+      [active]="activeLink == link.name"> {{link.name}} </a>
+  }
+
+</nav>
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel> -->
+
+<mat-tab-group>
+  <mat-tab label="問卷基本資料">
+    <div class="body">
+      <form class="quest">
+        <label class="list-name">問卷名稱</label>
+        <br>
+        <input class="f1" />
+        <br>
+        <label class="list-name">問卷說明</label>
+        <br>
+        <textarea placeholder="請輸入問卷名稱(20字以內)" class="f1"></textarea>
+        <br>
+        <label class="list-name">開始時間</label>
+        <br>
+        <input type="datetime-local" name="startTime" />
+        <br>
+        <label class="list-name">結束時間</label>
+        <br>
+        <input type="datetime-local" name="endTime" />
+        <br>
+        <div style="display: flex;justify-content: flex-end;">
+          <button class="button">取消</button>
+          <button class="button">下一步</button>
+        </div>
+      </form>
+    </div>
+  </mat-tab>
+  <mat-tab label="問卷題目設定">
+    <div class="body">
+      <h3>題目設計</h3>
+      <p>題目</p>
+      <input class="f1">
+      <p>必填</p><input type="checkbox">
+      <p>題目類型</p>
+      <select>
+        <option>單選題</option>
+        <option>多選題</option>
+        <option>簡答題</option>
+      </select>
+      <p>選項:</p>
+      <div *ngFor="let txt of textboxes; let i = index">
+        <label>選項 {{i+1}}:</label>
+        <input class="f1" [(ngModel)]="textboxes[i]">
+        <button style="margin-left: 85%;" class="button" (click)="textboxes.splice(i, 1)">刪除</button>
+        <br>
+      </div>
+      <button class="button">加入</button>
+      <br><br>
+      <button class="button" (click)="addTextbox()">+新增選項</button>
+
+      <button class="button">儲存題目</button>
+    </div>
+    <div class="body">
+      <h3>題目</h3>
+      <table class="body3">
+        <thead>
+          <tr>
+            <th></th>
+            <th>編號</th>
+            <th>內容</th>
+            <th>問題種類</th>
+            <th>必填</th>
+            <th>編輯</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="padding-left: 10px;" type="checkbox" *ngFor="let item of items">
+            <td><input type="checkbox"></td>
+            <td>{{ item.id }}</td>
+            <td>{{ item.content }}</td>
+            <td>{{ item.type }}</td>
+            <td>{{ item.type2 }}</td>
+            <td><a href="">{{ item.edit }}</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="button">返回基本資料</button>
+      <button class="button">送出</button>
+    </div>
+  </mat-tab>
+  <mat-tab label="問卷回饋">
+    <div class="body2">
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> 編號 </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="names">
+          <th mat-header-cell *matHeaderCellDef> 姓名 </th>
+          <td mat-cell *matCellDef="let element"> {{element.names}} </td>
+        </ng-container>
+
+
+        <!-- start Column -->
+        <ng-container matColumnDef="start">
+          <th mat-header-cell *matHeaderCellDef> 填寫時間 </th>
+          <td mat-cell *matCellDef="let element"> {{element.start}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="result">
+          <th mat-header-cell *matHeaderCellDef> 結果 </th>
+          <td mat-cell *matCellDef="let element"><a href=""> {{element.result}} </a></td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </mat-tab>
+  <mat-tab label="統計"> Content 4 </mat-tab>
+</mat-tab-group>
