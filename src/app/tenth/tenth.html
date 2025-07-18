@@ -1,12 +1,20 @@
-<h2 mat-dialog-title>標題</h2>
+<h5 class="section">問卷時間： {{getStartT}} ~ {{getEndT}}</h5>
+<h2>{{getQuestTeema}}</h2>
+<span>{{getQuestExplain}}</span>
+@for(datas of getQuestion;track $index;let i=$index){
+  <label>{{datas.content}}</label><br>
+  @for(data of datas.answer;track $index;let j=$index){
+    @if(datas.type=="單選題"){
+     <input type="radio">
+    }
+    @if(datas.type=="多選題"){
+     <input type="checkbox">
+    }
+    @if(datas.type=="文字題"){
+     <input>
+    }
+    <label>{{data}}</label><br>
+  }
+}
 
-<mat-dialog-content>
-  <p>訊息</p>
-</mat-dialog-content>
-
-<mat-dialog-actions>
-  <button (click)="N()">確定</button>
-  <button (click)="Y()">取消</button>
-</mat-dialog-actions>
-
-
+<button routerLink="/ninth">確定送出</button>

@@ -1,37 +1,72 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Example } from '../@services/example';
 
 @Component({
   selector: 'app-sixth',
   imports: [MatTabsModule, RouterOutlet, RouterLink, FormsModule,
-    MatTableModule, MatPaginatorModule,CommonModule],
+    MatTableModule, MatPaginatorModule, CommonModule],
   templateUrl: './sixth.html',
   styleUrl: './sixth.scss'
 })
 export class Sixth {
+  constructor(private teema: Example) { }
+  inputText!: string
+  inputText2!: string
+  required: boolean = false
+
+  getInputText!: string
+  getInputText2!: string
+  getRequired: boolean = false
+
+  items: { question: string, type: string, required: boolean }[] = []
+
+  addItem() {
+    // this.teema.inputText = this.inputText
+    // this.getInputText = this.teema.inputText
+
+    // this.teema.inputText2 = this.inputText2
+    // console.log(this.teema.inputText2)
+    // this.getInputText2 = this.teema.inputText2
+
+    // this.teema.required = this.required
+    // this.getRequired = this.teema.required
+
+    if (this.inputText !== "" && this.inputText2 !== "") {
+      this.items.push({
+        question: this.getInputText,
+        type: this.getInputText2,
+        required: this.getRequired
+      });
+      this.inputText = "";
+      this.inputText2 = "";
+      this.required = false;
+    }
+  }
+
+  @ViewChild('tabGroup') tabGroup!: MatTabGroup;
+
+  goToNextTab() {
+    if (this.tabGroup && this.tabGroup.selectedIndex !== undefined) {
+      this.tabGroup.selectedIndex! += 1;
+    }
+  }
+
   textboxes: string[] = [''];   // 一開始先有一個
 
   addTextbox() {
     this.textboxes.push('');    // 每次按鈕就加一個空字串
   }
 
-  items = [
-    { id: 1, content: 'Electronics',type:'單選題',type2:'必填',edit:'編輯' },
-    { id: 2, content: 'Electronics',type:'多選題',type2:'必填',edit:'編輯' },
-    { id: 3, content: 'Electronics',type:'簡答題',type2:'必填',edit:'編輯' },
-  ];
-  // links = [
-  //   { path: '/firth', name: "問卷" },
-  //   { path: '/second', name: "題目" },
-  //   { path: '/third', name: "回饋問卷" },
-  //   { path: '/forth', name: "統計" }
-  // ];
-  // activeLink = this.links[0].name;
+
+
+
+
 
   displayedColumns: string[] = ['position', 'names', 'start', 'result'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);

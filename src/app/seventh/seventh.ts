@@ -2,10 +2,11 @@ import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-seventh',
-  imports: [FormsModule, MatTableModule, MatPaginatorModule],
+  imports: [FormsModule, MatTableModule, MatPaginatorModule,RouterLink],
   templateUrl: './seventh.html',
   styleUrl: './seventh.scss'
 })

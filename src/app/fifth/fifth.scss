@@ -9,11 +9,10 @@ $hatsune-white: #ffffff;
 display: flex;
 align-items: center;
 justify-content: center;
-width: 100%;
-height: 100%;
 background-color: #f0f9f8;
 font-family: 'Segoe UI', 'Noto Sans TC', sans-serif;
 border-radius: 12px;
+font-size: 15px;
 
 }
 
@@ -56,7 +55,7 @@ text-align: center;
   padding: 8px 16px;
   margin: 8px 4px 0 0;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: bold;
   transition: background-color 0.3s, transform 0.3s;
 

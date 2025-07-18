@@ -1,34 +1,52 @@
 <div class="body">
-<h3>題目設計</h3>
-    <p>題目</p>
-    <input>
-    <p>必填</p><input type="checkbox">
-    <p>題目類型</p>
-    <select>
-      <option>單選題</option>
-      <option>多選題</option>
-      <option>簡答題</option>
-     </select>
-    <p>選項:</p>
-    <input  type="text"placeholder="多個答案以/做區隔" >
-    <button class="buttonCute">加入</button>
-    <br><br>
-    <button class="buttonCute">+新增選項</button>
-    <button class="buttonCute">儲存題目</button>
+  <h3>題目設計</h3>
+  <p>題目</p>
+  <input [(ngModel)]="inputText" class="f1">
+  <p>題目類型</p>
+  <select [(ngModel)]="inputText2">
+    <option>單選題</option>
+    <option>多選題</option>
+    <option>簡答題</option>
+    <option>文字題</option>
+  </select>
+  <p>必填</p><input [(ngModel)]="required" type="checkbox">
+  <p>選項:</p>
+  @for(txt of textboxes; track $index; let i = $index) {
+  <div>
+    <label>選項 {{i+1}}:</label>
+    <input class="f1" [(ngModel)]="textboxes[i]">
+    <button style="margin-left: 85%;" class="button" (click)="textboxes.splice(i, 1)">刪除</button>
+    <br>
+  </div>
+  }
+
+
+  <br><br>
+  <button class="button" (click)="addTextbox()">+新增選項</button>
+
+  <button class="button" (click)="addItem()">儲存題目</button>
 </div>
 <div class="body">
-<h3>題目</h3>
-<button class="buttonCute">返回基本資料</button>
-<button class="buttonCute">送出</button>
+  <h3>題目</h3>
+  <table class="body3">
+    <thead>
+      <tr>
+        <th>編號</th>
+        <th>題目</th>
+        <th>問題種類</th>
+        <th>必填</th>
+        <th>編輯</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="padding-left: 10px;" *ngFor="let item of items; let i = index">
+        <td>{{ i+1 }}</td>
+        <td>{{ item.content }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.required ? '是' : '否' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="button" routerLink="/first">返回基本資料</button>
+  <button (click)="goPreview()" class="button" routerLink="/tenth">送出</button>
 </div>
-
-
-
-
-
-
-
-
-
-
-

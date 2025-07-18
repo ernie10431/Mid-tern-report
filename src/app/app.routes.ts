@@ -9,11 +9,12 @@ import { Eighth } from './eighth/eighth';
 import { Ninth } from './ninth/ninth';
 import { Tenth } from './tenth/tenth';
 import { Routes } from '@angular/router';
+import { Preview } from './preview/preview';
 
 
 
 export const routes: Routes = [
-
+{path:'',redirectTo:'/third',pathMatch:'full'},
 {path: 'first', component: First},
 {path: 'second', component: Secend},
 {path: 'third', component: Third},
@@ -24,6 +25,7 @@ export const routes: Routes = [
 {path: 'eighth', component: Eighth},
 {path: 'ninth', component: Ninth},
 {path: 'tenth', component: Tenth},
+{path: 'preview', component: Preview},
 
 
 

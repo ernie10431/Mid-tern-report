@@ -1,21 +1,33 @@
-import { Component, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { QuestService } from './../@services/quest-service';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { Example } from '../@services/example';
+
 @Component({
   selector: 'app-tenth',
-  imports: [MatDialogTitle, MatDialogActions, MatDialogContent],
+  imports: [RouterLink, FormsModule],
   templateUrl: './tenth.html',
   styleUrl: './tenth.scss'
 })
 export class Tenth {
-  readonly dailogRet = inject(MatDialogRef<Tenth>);
-  readonly data = inject<any>(MAT_DIALOG_DATA);
+  getQuestTeema: string = "";
+  getQuestExplain: string = "";
+  getStartT: string = "";
+  getEndT: string = "";
 
-  N() {
-    this.dailogRet.close();
-  };
+  getQuestion:any[]=[]
+  constructor(private questService: QuestService, private teema: Example) { }
 
-  Y() {
-    let returnData = 'banira';
-    this.dailogRet.close(returnData);
-  };
+  items: { content: string, type: string, required: boolean }[] = [];
+  ngOnInit(): void {
+    this.getQuestion=this.teema.question
+    console.log(this.getQuestion);
+  }
+  ngAfterContentInit(): void {
+    this.getQuestTeema = this.questService.newQuestTeema
+    this.getQuestExplain = this.questService.newQuestExplain
+    this.getStartT = this.questService.newStartT
+    this.getEndT = this.questService.newEndT
+  }
 }
