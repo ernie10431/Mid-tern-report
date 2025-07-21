@@ -11,6 +11,9 @@
   </select>
   <p>必填</p><input [(ngModel)]="required" type="checkbox">
   <p>選項:</p>
+  <div style="text-align: end;">
+   <button class="button" (click)="addTextbox()">+新增選項</button>
+   </div>
   @for(txt of textboxes; track $index; let i = $index) {
   <div>
     <label>選項 {{i+1}}:</label>
@@ -22,9 +25,10 @@
 
 
   <br><br>
-  <button class="button" (click)="addTextbox()">+新增選項</button>
+  <div style="text-align: end;">
 
   <button class="button" (click)="addItem()">儲存題目</button>
+  </div>
 </div>
 <div class="body">
   <h3>題目</h3>

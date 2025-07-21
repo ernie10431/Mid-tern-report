@@ -1,3 +1,4 @@
+import { AnswerService } from './../@services/answer-service';
 import { Router, RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { UserSrevice } from '../@services/user-srevice';
@@ -18,6 +19,7 @@ questData!: any;
     private questService: QuestService,
     private router: Router,
     private userService: UserSrevice,
+    private answerService: AnswerService
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +36,8 @@ questData!: any;
   }
 
   goList() {
+    this.answerService.addAnswer(this.questData);
+
     // 儲存成功後記得將Service中的資料清空避免資料錯誤
     this.questService.questData = null;
     this.router.navigate(['/forth']);

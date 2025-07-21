@@ -1,7 +1,9 @@
 import { QuestService } from './../@services/quest-service';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { Router, RouterLink } from '@angular/router';
+import { DiologPage } from '../diolog-page/diolog-page';
 
 @Component({
   selector: 'app-first',
@@ -10,19 +12,33 @@ import { RouterLink } from '@angular/router';
   styleUrl: './first.scss'
 })
 export class First {
-  constructor(private questService: QuestService) { }
+
+  readonly dialog = inject(MatDialog);
+  constructor(private questService: QuestService,private router:Router) { }
   newQuestTeema: string = "";
   newQuestExplain: string = "";
   newStartT: string = "";
   newEndT: string = "";
 
   TPData() {
-    this.questService.newQuestTeema = this.newQuestTeema
+if(this.newQuestTeema==""||this.newQuestExplain==""||this.newStartT==""||this.newEndT==""){
+const dialogRef = this.dialog.open(DiologPage,{
+  // data:{name:'name',animal:'title'},
+  width: "200px",
+  height:"200px",
+})
+}
+ else{
+  this.questService.newQuestTeema = this.newQuestTeema
     this.questService.newQuestExplain=this.newQuestExplain
     this.questService.newStartT=this.newStartT
     this.questService.newEndT=this.newEndT
-    console.log(132)
-  }
+this.router.navigate(["/second"])
 }
+}
+
+
+  }
+
 
 

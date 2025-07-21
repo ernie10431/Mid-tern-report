@@ -10,6 +10,7 @@ import { Ninth } from './ninth/ninth';
 import { Tenth } from './tenth/tenth';
 import { Routes } from '@angular/router';
 import { Preview } from './preview/preview';
+import { ReadData } from './read-data/read-data';
 
 
 
@@ -26,6 +27,7 @@ export const routes: Routes = [
 {path: 'ninth', component: Ninth},
 {path: 'tenth', component: Tenth},
 {path: 'preview', component: Preview},
+{path: 'readData/:index', component: ReadData}
 
 
 

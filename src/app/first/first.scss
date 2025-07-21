@@ -12,9 +12,14 @@ $hatsune-white: #ffffff;
   font-family: 'Segoe UI', 'Noto Sans TC', sans-serif,;
   padding: 20px;
   border-radius: 12px;
-  max-width: 500px;
+  max-width: 900px;
+  width: 35%;
   margin: 20px auto; // 水平置中
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* 表單標題 */

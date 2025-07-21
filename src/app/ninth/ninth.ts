@@ -1,10 +1,12 @@
+import { DialogDel } from './../dialog-del/dialog-del';
 
-import { Component, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { DataService } from '../@service/data-service';
 import { Router, RouterLink } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-ninth',
@@ -14,6 +16,7 @@ import { Router, RouterLink } from '@angular/router';
 
 })
 export class Ninth {
+  readonly dialogDel = inject(MatDialog)
   inputData: string = '';
   inputData2: string = '';
   inputDataS: string = '';
@@ -34,7 +37,23 @@ export class Ninth {
 
 
   deleteSelected() {
-    this.dataSource.data = this.dataSource.data.filter(item => !item.checked);
+    const dialogRef = this.dialogDel.open(DialogDel, {
+
+    width: '300px',
+    height:'180px',
+    data: { message: '是否確認刪除？' }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      // 使用者點了「確認」
+      this.dataSource.data = this.dataSource.data.filter(item => !item.checked);
+    }
+    // 否則，點了「取消」，什麼都不做
+  });
+
+
+    // this.dataSource.data = this.dataSource.data.filter(item => !item.checked);
   }
 
   ngOnInit(): void {

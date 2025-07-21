@@ -52,7 +52,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <button style="width: 100px;" class="btCss" routerLink="/ninth">管理者</button>
+  <button style="width: 110px;" class="btCss" routerLink="/ninth">前往管理頁</button>
+  <button style="width: 100px;" class="btCss" routerLink="/third">登出</button>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
   </mat-paginator>
 </div>
